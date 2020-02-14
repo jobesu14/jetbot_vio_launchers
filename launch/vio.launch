@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <!--arg name="imu_start_delay" default="0.0"/>
+    <arg name="cam_start_delay" default="0.0"/>
+    <arg name="rovio_start_delay" default="10.0"/-->
+
+    <node pkg="nxp_precision_9dof" type="imu.py" name="imu0"/> # launch-prefix="bash -c 'sleep $(arg imu_start_delay); $0 $@' "/>
+    <node pkg="jetbot_ros" type="jetbot_camera" name="cam0"/> # launch-prefix="bash -c 'sleep $(arg cam_start_delay); $0 $@' "/>
+
+    <node pkg="rovio" type="rovio_node" name="rovio" output="screen"> # launch-prefix="bash -c 'sleep $(arg rovio_start_delay); $0 $@' ">
+        <param name="filter_config" value="$(find rovio)/cfg/rovio.info"/>
+        <param name="camera0_config" value="$(find rovio)/cfg/raspicam_v2_wide.yaml"/>
+    </node>
+</launch>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<launch>
+  <node pkg="jetbot_ros" type="jetbot_camera" name="cam0"/>
+  <node pkg="nxp_precision_9dof" type="imu.py" name="imu" output="screen"/>
+</launch>
